@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky 101 Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/joystix" rel="stylesheet">
+                
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0490a2 0%, #09365b 100%);
+            padding: 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .site-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            border-radius: 20px;
+            position: absolute;
+            left: 400px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hero-text {
+            color: white;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-text p {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            background: #00c4cc;
+            color: #1a1a2e;
+            padding: 1rem 3.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 300;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 380px;
+            margin-left: 4rem;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 100%;
+            padding: 12px;
+            border-radius: 40px;
+            background: #1a1a2e;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #1a1a2e;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 2;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1rem;
+        }        
+
+        .store-btn {
+            background: white;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+            color: #000;
+        }
+
+        .store-btn img {
+            height: 40px;
+            width: auto;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Rewards Section */
+        .rewards-section {
+            background: linear-gradient(135deg, #0490a2 0%, #09365b 100%);
+            padding: 6rem 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .rewards-content {
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .bonus-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .rewards-image {
+            max-width: 800px;
+            height: auto;
+        }
+
+        .bonus-card h2 {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .bonus-card div {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            gap: 1rem;
+        }
+
+        .bonus-card h3 {
+            font-size: 3rem;
+            color: #000;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+        }
+
+        .arcade-classic {
+            font-family: 'Joystix', sans-serif;                                                
+            font-size: 10rem;
+            color: #000;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: top;
+            -webkit-text-stroke: 4px #fff;
+            text-stroke: 4px #fff;
+        }
+
+        /* Platform Section */
+        .platform-section {
+            padding: 6rem 0rem;
+            background: white;
+        }
+
+        .platform-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .platform-text {
+            flex: 1;
+        }
+
+        .platform-text h2 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: #0a1a44;
+            font-weight: 300;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .platform-text p {
+            font-size: 1.5rem;
+            color: #0a1a44;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+
+        .platform-image {
+            flex: 1;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .platform-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: #142140;
+            padding: 4rem 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-left {
+            max-width: 500px;
+        }
+
+        .footer-title {
+            color: #00E5FF;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            background-color: #071332;
+            padding: 1rem 2rem;
+            font-weight: 300;
+        }
+
+        .footer-email {
+            background-color: #ffffff;
+            color: #0a1a44;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-social {
+            padding: 1.5rem;
+            background: #57e4ff;
+        }
+
+        .social-label {
+            color: #0a1a44;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #0a1a44;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .footer-image {
+            max-width: 700px;
+            height: auto;
+        }
+
+        .footer-bottom {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-text h1 {
+                font-size: 4rem;
+            }
+            .phone-mockup {
+                width: 340px;
+            }
+            .platform-content {
+                gap: 4rem;
+            }
+            .footer-image {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .hero-text {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .store-buttons {
+                justify-content: center;
+            }
+
+            .phone-mockup {
+                width: 300px;
+                margin-left: 0;
+            }
+
+            .site-title {
+                font-size: 2.5rem;
+            }
+
+            .rewards-content,
+            .platform-content,
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-left {
+                margin-bottom: 2rem;
+            }
+
+            .footer-right {
+                justify-content: center;
+            }
+
+            .footer-image {
+                max-width: 300px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="assets/logo.png" alt="Lucky 101 Logo" class="logo">
+        <h1 class="site-title">Lucky 101</h1>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p>Welcome to Lucky 101 Game</p>
+                <h1>We create worlds for you to play</h1>                
+                <a href="#download" class="download-btn">Download the App</a>
+                <div class="store-buttons">
+                    <a href="#" class="store-btn">
+                        <img src="assets/app-store.png" alt="App Store">
+                        Get it on the
+                        <b>App Store</b>
+                    </a>
+                    <a href="#" class="store-btn">
+                        <img src="assets/google-play.png" alt="Google Play">
+                        Get it on the
+                        <br>
+                        <b>App Store</b>
+                    </a>
+                </div>
+            </div>
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <img src="assets/hero-image.png" alt="Game Screenshot" class="phone-screen">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="rewards-section">
+        <div class="rewards-content">
+            <img src="assets/lucky-rabbit.png" alt="Lucky Rabbit" class="rewards-image">
+            <div class="bonus-card">
+                <h2>Register and bind<br>mobile phone<br>rewards</h2>
+                <div><span class="arcade-classic">30</span><h3> gold bonus</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="platform-section">
+        <div class="platform-content">
+            <div class="platform-text">
+                <h2>The most trusted <br> Gaming Platform</h2>
+                <p>Where every bet you place and every game you play transforms excitement into unparalleled opportunities. Join us and elevate your gaming experience to new heights!</p>
+            </div>
+            <div class="platform-image">
+                <img src="assets/gaming-platform.png" alt="Gaming Platform">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2 class="footer-title">Download</h2>
+                <p class="footer-email">Email: lucky101@gmail.com</p>
+                <div class="footer-social">
+                    <p class="social-label">Social</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">
+                            <img src="assets/yt-logo.svg" alt="YouTube">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/fb-logo.svg" alt="Facebook">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/x-logo.svg" alt="X">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="assets/instagram-logo.svg" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src="assets/bottom-image.png" alt="Lucky 101 Characters" class="footer-image">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="#">Terms & Support</a>
+        </div>
+    </footer>
+</body>
+</html>
